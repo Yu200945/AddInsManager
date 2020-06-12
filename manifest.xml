@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TaskPaneApp">
+  <Id>3D209C2F-0254-4BD5-A85F-535EB3DD9E49</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Microsoft</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="AddInManager">
+  </DisplayName>
+  <AppDomains>
+	<AppDomain>https://localhost:3000/</AppDomain>
+  </AppDomains>
+  <Description DefaultValue="AddInManager Description">
+  </Description>
+  <IconUrl DefaultValue="https://ssl-api.bing.com/office/maps/images/BingMaps.png"/>
+  <Capabilities>
+    <Capability Name="Workbook" /> <!-- Excel -->
+    <Capability Name="Document" /> <!-- Word -->
+    <Capability Name="Project" /> <!-- Project -->
+    <Capability Name="Presentation" /> <!-- PowerPoint -->
+    <Capability Name="Mailbox" /> <!-- Outlook -->
+  </Capabilities>
+  <DefaultSettings>
+ 	<SourceLocation DefaultValue="http://localhost:8080/src/home.html">        
+    </SourceLocation>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+</OfficeApp>
+
+
