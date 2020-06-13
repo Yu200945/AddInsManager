@@ -1,0 +1,51 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th.name {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding-left: 8px;
+    float:bottom;
+}
+
+td.name {
+    text-align: left;
+    padding: 8px;
+}
+
+th.cpu,
+th.memory {
+    border: 1px solid #dddddd;
+    text-align: right;
+    padding: 8px;
+}
+
+th div.title{ /*put the title at the bottom of the cell*/
+    float: bottom;
+}
+
+div.unit{
+    float: right;
+}
+
+td div.quantity{
+    text-align: right;
+}
+td div.unit{
+    float: right;
+}
+
+td.cpu,
+td.memory {
+    text-align: right;
+    padding: 8px; 
+}
+
+
+button.endTask {
+    margin: 8px;
+    float:right;
+}
