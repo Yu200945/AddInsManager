@@ -4,7 +4,7 @@ An Add In Manager which shows some informaton about active add ins, including ad
 You can also kill an add in process by clicking the end task button on the bottom right corner.<br />
 
 Jun 11, 2020
-------------
+-
   - Created a table to show the demo data.<br />
   - Created a button on the bottom right corner(no functions at this time).<br />
   - Implemented the sorting function by clicking each title of columns.<br />
@@ -15,3 +15,8 @@ Jun 12, 2020
 -
   - Re-wrote the tableSort function, each column can be in ascending and descending order.<br />
   - Implemented the computeTable function, which can sum up each cell, and return the total number of each column.<br />
+  
+Jun 14, 2020
+-
+  - Implemented the background color and hover features. <br />
+  - Adjusted the "End task" button properly. <br />
