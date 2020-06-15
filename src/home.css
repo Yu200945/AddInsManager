@@ -4,11 +4,30 @@ table {
     width: 100%;
 }
 
+th:hover{
+    background-color: #e5f3ff;
+}
+
+tr.data:hover{
+    background-color:#e5f3ff;
+    filter:Alpha(Opacity=60);
+    opacity:0.6
+}
+
+
+th{
+    border-top: transparent;
+    border-bottom: 2px solid #dddddd;
+    border-left: 2px solid #dddddd;
+    border-right: 2px solid #dddddd;
+    display: table-cell;
+    vertical-align: bottom;
+}
+
 th.name {
-    border: 1px solid #dddddd;
     text-align: left;
     padding-left: 8px;
-    float:bottom;
+    padding-bottom: 8px;
 }
 
 td.name {
@@ -18,16 +37,16 @@ td.name {
 
 th.cpu,
 th.memory {
-    border: 1px solid #dddddd;
     text-align: right;
     padding: 8px;
 }
 
 th div.title{ /*put the title at the bottom of the cell*/
-    float: bottom;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 div.unit{
+    padding-left: 4px;
     float: right;
 }
 
@@ -42,10 +61,17 @@ td.cpu,
 td.memory {
     text-align: right;
     padding: 8px; 
+    background-color:#fff4c4;
+    border-left: 2px solid #f0dea8;
+    border-right: 2px solid	#f0dea8;
 }
 
 
 button.endTask {
     margin: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top:4px;
+    padding-bottom: 4px;
     float:right;
 }
