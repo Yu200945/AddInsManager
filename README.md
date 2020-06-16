@@ -20,3 +20,7 @@ Jun 14, 2020
 -
   - Implemented the background color and hover features. <br />
   - Adjusted the "End task" button properly. <br />
+
+Jun 16, 2020
+-
+  - Merged the javascript files.
