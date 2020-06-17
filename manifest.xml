@@ -14,12 +14,16 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Microsoft</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="AddInManager">
-  </DisplayName>
 
-  <Description DefaultValue="AddInManager Description">
-  </Description>
+  <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
+  <DisplayName DefaultValue="AddInManager" />
+  <Description DefaultValue="AddInManager Description" />
+
+  <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
   <IconUrl DefaultValue="https://ssl-api.bing.com/office/maps/images/BingMaps.png"/>
+
+  <!--End Basic Settings. -->
+  <!--Begin TaskPane Mode integration. This section is used if there are no VersionOverrides or if the Office client version does not support add-in commands. -->
   <Hosts>
     <Host Name="Workbook" />
   </Hosts>
@@ -28,6 +32,7 @@
     <SourceLocation DefaultValue="http://localhost:8080/src/home.html">
     </SourceLocation>
   </DefaultSettings>
+  <!-- End TaskPane Mode integration.  -->
 
   <Permissions>ReadWriteDocument</Permissions>
 
@@ -41,11 +46,12 @@
       <!-- Make sure the hosts you override match the hosts declared in the top section of the manifest. -->
       <Host xsi:type="Workbook">
 
+        <!-- Form factor. Currently only DesktopFormFactor is supported. -->
         <DesktopFormFactor>
           <!--"This code enables a customizable message to be displayed when the add-in is loaded successfully upon individual install."-->
           <GetStarted>
             <!-- Title of the Getting Started callout. The resid attribute points to a ShortString resource -->
-            <Title resid="AddInsManager.GetStarted.Title"/>
+            <Title resid="Mgr.GetStarted.Title"/>
 
             <!-- Description of the Getting Started callout. resid points to a LongString resource -->
             <Description resid="Mgr.GetStarted.Description"/>
@@ -95,6 +101,46 @@
               </Group>
             </OfficeTab>
           </ExtensionPoint>
+
+          <!-- ContextMenu is the menu in the context cell. -->
+          <ExtensionPoint xsi:type="ContextMenu">
+            <OfficeMenu id="ContextMenuCell">
+              <Control xsi:type="Menu" id="ContextMenu2">
+                <!-- information about the control -->
+                <Label resid="Mgr.Menu.Label" />
+                <Tooltip resid="Mgr.Menu.ToolTip" />
+                <Supertip>
+                  <Title resid="Mgr.Menu.Label" />
+                  <Description resid="Mgr.Menu.ToolTip" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Mgr.Mnicon_16x16" />
+                  <bt:Image size="32" resid="Mgr.Mnicon_32x32" />
+                  <bt:Image size="80" resid="Mgr.Mnicon_80x80" />
+                </Icon>
+                <Items>
+                  <Item id="showGallery2">
+                    <Label resid="Mgr.Menu.Label"/>
+                    <Supertip>
+                      <Title resid="Mgr.Menu.Label" />
+                      <Description resid="Mgr.Menu.ToolTip" />
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Mgr.Mnicon_16x16" />
+                      <bt:Image size="32" resid="Mgr.Mnicon_32x32" />
+                      <bt:Image size="80" resid="Mgr.Mnicon_80x80" />
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>MyTaskPaneID1</TaskpaneId>
+                      <SourceLocation resid="Mgr.Menu.Url" />
+                    </Action>
+                  </Item>
+                </Items>
+              </Control>
+              <!-- other controls, as needed -->
+            </OfficeMenu>
+          </ExtensionPoint>
+
         </DesktopFormFactor>
 
       </Host>
@@ -107,12 +153,18 @@
         <bt:Image id="Mgr.tpicon_16x16" DefaultValue="https://officedev.github.io/custom-functions/addins/CFSample/Images/Button16x16.png" />
         <bt:Image id="Mgr.tpicon_32x32" DefaultValue="https://officedev.github.io/custom-functions/addins/CFSample/Images/Button32x32.png" />
         <bt:Image id="Mgr.tpicon_80x80" DefaultValue="https://officedev.github.io/custom-functions/addins/CFSample/Images/Button80x80.png" />
+
+        <bt:Image id="Mgr.Mnicon_16x16" DefaultValue="https://officedev.github.io/custom-functions/addins/CFSample/Images/Button16x16.png" />
+        <bt:Image id="Mgr.Mnicon_32x32" DefaultValue="https://officedev.github.io/custom-functions/addins/CFSample/Images/Button32x32.png" />
+        <bt:Image id="Mgr.Mnicon_80x80" DefaultValue="https://officedev.github.io/custom-functions/addins/CFSample/Images/Button80x80.png" />
       </bt:Images>
 
       <bt:Urls>
         <bt:Url id="Mgr.Taskpane.Url" DefaultValue="http://localhost:8080/src/home.html" />
         <bt:Url id="Mgr.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
 
+
+        <bt:Url id="Mgr.Menu.Url" DefaultValue="http://localhost:8080/src/home.html" />
       </bt:Urls>
 
       <!-- ShortStrings max characters==125. -->
@@ -121,12 +173,18 @@
         <bt:String id="Mgr.Group1Label" DefaultValue="AddInsManager Group" />
         <bt:String id="Mgr.GetStarted.Title" DefaultValue="Get started with your AddInsManager add-in!" />
 
+        <bt:String id="Mgr.Menu.Label" DefaultValue="Show AddInsManager Taskpane" />
+
       </bt:ShortStrings>
 
       <!-- LongStrings max characters==250. -->
+      <!-- IMPORTANT!!! id max characters==32. -->
       <bt:LongStrings>
         <bt:String id="Mgr.TaskpaneButton.Tooltip" DefaultValue="Click to show AddInsManager taskpane" />
         <bt:String id="Mgr.GetStarted.Description" DefaultValue="Your AddInsManager add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started." />
+
+        <bt:String id="Mgr.Menu.ToolTip" DefaultValue="Click to show AddInsManager taskpane" />
+
       </bt:LongStrings>
 
     </Resources>
