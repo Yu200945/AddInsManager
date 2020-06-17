@@ -23,4 +23,5 @@ Jun 14, 2020
 
 Jun 16, 2020
 -
-  - Merged the javascript files.
+  - Merged the javascript files. <br />
+  - Modified the manifest file. Give credit to Madhav. <br />
