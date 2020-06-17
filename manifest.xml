@@ -1,32 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.0" 
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created: 3D209C2F-0254-4BD5-A85F-535EB3DD9E49 -->
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
   xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+
+  <!-- Begin Basic Settings: Add-in metadata, used for all versions of Office unless override provided. -->
+
+  <!-- IMPORTANT! Id must be unique for your add-in, if you reuse this manifest ensure that you change this id to a new GUID. -->
   <Id>3D209C2F-0254-4BD5-A85F-535EB3DD9E49</Id>
+
+  <!--Version. Updates from the store only get triggered if there is a version change. -->
   <Version>1.0.0.0</Version>
   <ProviderName>Microsoft</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="AddInManager">
   </DisplayName>
-  <AppDomains>
-    <AppDomain>https://localhost:3000/</AppDomain>
-  </AppDomains>
+
   <Description DefaultValue="AddInManager Description">
   </Description>
   <IconUrl DefaultValue="https://ssl-api.bing.com/office/maps/images/BingMaps.png"/>
-  <Capabilities>
-    <Capability Name="Workbook" />
-    <!-- Excel -->
-    <Capability Name="Document" />
-    <!-- Word -->
-    <Capability Name="Project" />
-    <!-- Project -->
-    <Capability Name="Presentation" />
-    <!-- PowerPoint -->
-    <Capability Name="Mailbox" />
-    <!-- Outlook -->
-  </Capabilities>
+  <Hosts>
+    <Host Name="Workbook" />
+  </Hosts>
 
   <DefaultSettings>
     <SourceLocation DefaultValue="http://localhost:8080/src/home.html">
@@ -52,10 +48,10 @@
             <Title resid="AddInsManager.GetStarted.Title"/>
 
             <!-- Description of the Getting Started callout. resid points to a LongString resource -->
-            <Description resid="AddInsManager.GetStarted.Description"/>
+            <Description resid="Mgr.GetStarted.Description"/>
 
             <!-- Points to a URL resource which details how the add-in should be used. -->
-            <LearnMoreUrl resid="AddInsManager.GetStarted.LearnMoreUrl"/>
+            <LearnMoreUrl resid="Mgr.GetStarted.LearnMoreUrl"/>
           </GetStarted>
 
           <!-- PrimaryCommandSurface is the main Office Ribbon. -->
@@ -63,50 +59,43 @@
             <!-- Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab. -->
             <OfficeTab id="TabHome">
               <!-- Ensure you provide a unique id for the group. Recommendation for any IDs is to namespace using your company name. -->
-              <Group id="AddInsManager.Group1">
+              <Group id="Mgr.Group1">
                 <!-- Label for your group. resid must point to a ShortString resource. -->
-                <Label resid="AddInsManager.Group1Label" />
+                <Label resid="Mgr.Group1Label" />
                 <!-- Icons. Required sizes 16,32,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX. -->
                 <!-- Use PNG icons. All URLs on the resources section must use HTTPS. -->
                 <Icon>
-                  <bt:Image size="16" resid="AddInsManager.tpicon_16x16" />
-                  <bt:Image size="32" resid="AddInsManager.tpicon_32x32" />
-                  <bt:Image size="80" resid="AddInsManager.tpicon_80x80" />
+                  <bt:Image size="16" resid="Mgr.tpicon_16x16" />
+                  <bt:Image size="32" resid="Mgr.tpicon_32x32" />
+                  <bt:Image size="80" resid="Mgr.tpicon_80x80" />
                 </Icon>
 
                 <!-- Control. It can be of type "Button" or "Menu". -->
-                <Control xsi:type="Button" id="AddInsManager.TaskpaneButton">
-                  <Label resid="AddInsManager.TaskpaneButton.Label" />
+                <Control xsi:type="Button" id="Mgr.TaskpaneButton">
+                  <Label resid="Mgr.TaskpaneButton.Label" />
                   <Supertip>
                     <!-- ToolTip title. resid must point to a ShortString resource. -->
-                    <Title resid="AddInsManager.TaskpaneButton.Label" />
+                    <Title resid="Mgr.TaskpaneButton.Label" />
                     <!-- ToolTip description. resid must point to a LongString resource. -->
-                    <Description resid="AddInsManager.TaskpaneButton.Tooltip" />
+                    <Description resid="Mgr.TaskpaneButton.Tooltip" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="AddInsManager.tpicon_16x16" />
-                    <bt:Image size="32" resid="AddInsManager.tpicon_32x32" />
-                    <bt:Image size="80" resid="AddInsManager.tpicon_80x80" />
+                    <bt:Image size="16" resid="Mgr.tpicon_16x16" />
+                    <bt:Image size="32" resid="Mgr.tpicon_32x32" />
+                    <bt:Image size="80" resid="Mgr.tpicon_80x80" />
                   </Icon>
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>ButtonId1</TaskpaneId>
                     <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
-                    <SourceLocation resid="AddInsManager.Taskpane.Url" />
+                    <SourceLocation resid="Mgr.Taskpane.Url" />
                   </Action>
                 </Control>
               </Group>
             </OfficeTab>
           </ExtensionPoint>
-
         </DesktopFormFactor>
-
-        <AllFormFactors>
-          <ExtensionPoint xsi:type="CustomFunctions">
-            <Namespace resid="namespace"/>
-          </ExtensionPoint>
-        </AllFormFactors>
 
       </Host>
     </Hosts>
@@ -115,30 +104,29 @@
     <Resources>
 
       <bt:Images>
-        <bt:Image id="AddInsManager.tpicon_16x16" DefaultValue="https://officedev.github.io/custom-functions/addins/CFSample/Images/Button16x16.png" />
-        <bt:Image id="AddInsManager.tpicon_32x32" DefaultValue="https://officedev.github.io/custom-functions/addins/CFSample/Images/Button32x32.png" />
-        <bt:Image id="AddInsManager.tpicon_80x80" DefaultValue="https://officedev.github.io/custom-functions/addins/CFSample/Images/Button80x80.png" />
+        <bt:Image id="Mgr.tpicon_16x16" DefaultValue="https://officedev.github.io/custom-functions/addins/CFSample/Images/Button16x16.png" />
+        <bt:Image id="Mgr.tpicon_32x32" DefaultValue="https://officedev.github.io/custom-functions/addins/CFSample/Images/Button32x32.png" />
+        <bt:Image id="Mgr.tpicon_80x80" DefaultValue="https://officedev.github.io/custom-functions/addins/CFSample/Images/Button80x80.png" />
       </bt:Images>
 
       <bt:Urls>
-        <bt:Url id="AddInsManager.Taskpane.Url" DefaultValue="https://github.com/Yu200945/AddInsManager/blob/master/src/home.html" />
-        <bt:Url id="AddInsManager.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
+        <bt:Url id="Mgr.Taskpane.Url" DefaultValue="http://localhost:8080/src/home.html" />
+        <bt:Url id="Mgr.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
 
       </bt:Urls>
 
       <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
-        <bt:String id="AddInsManager.TaskpaneButton.Label" DefaultValue="Show AddInsManager Taskpane" />
-        <bt:String id="AddInsManager.Group1Label" DefaultValue="AddInsManager Group" />
-        <bt:String id="AddInsManager.GetStarted.Title" DefaultValue="Get started with your AddInsManager add-in!" />
+        <bt:String id="Mgr.TaskpaneButton.Label" DefaultValue="Show AddInsManager Taskpane" />
+        <bt:String id="Mgr.Group1Label" DefaultValue="AddInsManager Group" />
+        <bt:String id="Mgr.GetStarted.Title" DefaultValue="Get started with your AddInsManager add-in!" />
 
-        <bt:String id="namespace" DefaultValue="AddInsManager" />
       </bt:ShortStrings>
 
       <!-- LongStrings max characters==250. -->
       <bt:LongStrings>
-        <bt:String id="AddInsManager.TaskpaneButton.Tooltip" DefaultValue="Click to show AddInsManager taskpane" />
-        <bt:String id="AddInsManager.GetStarted.Description" DefaultValue="Your AddInsManager add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started." />
+        <bt:String id="Mgr.TaskpaneButton.Tooltip" DefaultValue="Click to show AddInsManager taskpane" />
+        <bt:String id="Mgr.GetStarted.Description" DefaultValue="Your AddInsManager add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started." />
       </bt:LongStrings>
 
     </Resources>
@@ -146,5 +134,3 @@
   <!-- End Add-in Commands Mode integration. -->
 
 </OfficeApp>
-
-
